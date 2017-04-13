@@ -22,15 +22,12 @@ Rails.application.routes.draw do
   #login
   get 'sign_in' => 'sessions#new'
   post 'sign_in' => 'sessions#create'
-  get 'sign_out' => 'sessions#destroy'
+  delete 'sign_out' => 'sessions#destroy'
   ###
 
-  get '/user/:id' => 'user#show', :as => 'user_show'
-<<<<<<< b11c3f3ba6ecf28cffbd50d47efaa39cd029e51f
-  
-=======
+  #user
+  get '/user/:id' => 'user#show', :as => 'user'
 
->>>>>>> Implement method sessions#destroy and sign_out of sessions_helper
   get 'user/update'
 
   get 'user/new' => 'user#new' , as: 'new_user'
