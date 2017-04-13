@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
 
 
-  get 'sessions/new'
-
 ### Coordinator - ROUTES
   get 'coordinator/registration_request'
 
@@ -16,9 +14,11 @@ Rails.application.routes.draw do
 
   get 'coordinator/enable'
 
+  get 'sign_in' => 'sessions#new'
+
   get 'user/update'
 
-  get 'user/new'
+  get 'user/new' => 'user#new' , as: 'new_user'
 
   get 'user/create'
 
