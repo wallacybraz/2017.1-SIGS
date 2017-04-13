@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
   before_action :block_access, except: [:destroy]
   def new
+<<<<<<< cd5ae27879be129f7005e4cff92ff80fd9606272
     render 'new'
   end
 
@@ -18,5 +19,14 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     redirect_to root_url
+=======
+    render "new"
+  end
+
+  def create
+  end
+
+  def destroy
+>>>>>>> Implemented view session#new
   end
 end
