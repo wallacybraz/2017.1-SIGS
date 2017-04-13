@@ -1,0 +1,7 @@
+<h1>Coordenadores</h1>
+
+<% @coordinators.each do |coordinator| %>
+  <%= coordinator.user.name %>
+  <%= link_to 'Editar', user_edit_path(coordinator.user_id) %>
+  <%= link_to 'Ver', coordinator_show_path(coordinator) %>
+<% end %>
