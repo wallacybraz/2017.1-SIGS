@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get 'coordinator/enable'
 
   get 'sign_in' => 'sessions#new'
-
+  post 'sign_in' => 'sessions#create'
+  
+  ###
   get 'user/update'
 
   get 'user/new' => 'user#new' , as: 'new_user'
