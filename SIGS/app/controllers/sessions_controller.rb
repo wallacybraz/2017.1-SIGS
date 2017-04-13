@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
-      if @user && @user.authenticate(params[:session][:password])
+      if @user && @user.authenticate(params[:session][:password]) && @user.active == true
         sign_in(@user)
         redirect_to current_user
       else
@@ -18,4 +18,3 @@ class SessionsController < ApplicationController
     sign_out
     redirect_to root_url
   end
-end
