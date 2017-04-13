@@ -1,7 +1,6 @@
 module SessionsHelper
   def sign_in(user)
     session[:user_id] = user.id
-<<<<<<< 30dfdc8861a810a47d3711ebe320965239e6c00b
     if user.Coordinator?
       @nvl = 2
     end
@@ -22,9 +21,11 @@ module SessionsHelper
       redirect_to current_user
     end
   end
+
   def permission
     permission ||= @nvl
   end
+
   def logged_in?
       !current_user.nil?
   end
@@ -32,7 +33,5 @@ module SessionsHelper
   def sign_out
     session.delete(:user_id)
     @current_user = nil
-=======
->>>>>>> Implemented method sessions#createand sign_in in helper of session
   end
 end
