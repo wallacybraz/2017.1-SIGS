@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
 
-<<<<<<< b11c3f3ba6ecf28cffbd50d47efaa39cd029e51f
-=======
-
->>>>>>> Implement method sessions#destroy and sign_out of sessions_helper
   root 'sessions#new'
 
 ### Coordinator - ROUTES
@@ -27,6 +23,12 @@ Rails.application.routes.draw do
 
   #user
   get '/user/:id' => 'user#show', :as => 'user'
+
+  #login
+  get 'sign_in' => 'sessions#new'
+  post 'sign_in' => 'sessions#create'
+  get 'sign_out' => 'sessions#destroy'
+  ###
 
   get 'user/update'
 
