@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   root 'sessions#new'
 
 ### Coordinator - ROUTES
@@ -51,6 +50,10 @@ Rails.application.routes.draw do
   post 'administrative_assistant/create' => 'administrative_assistant#create',  as: 'adm_create'
 
   get 'administrative_assistant/show/:id' => 'administrative_assistant#show', as: 'adm_show'
+
+  get 'administrative_assistant/remove/:id' => 'administrative_assistant#remove', as: 'adm_remove'
+
+  get 'administrative_assistant/index_users' => 'administrative_assistant#index_users'
 
   get 'administrative_assistant/destroy/:id' => 'administrative_assistant#destroy', as: 'adm_remove'
 
