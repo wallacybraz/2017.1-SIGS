@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
-
-  get 'sessions/new'
+  root 'sessions#new'
 
 ### Coordinator - ROUTES
   get 'coordinator/registration_request'
@@ -16,9 +15,25 @@ Rails.application.routes.draw do
 
   get 'coordinator/enable'
 
+  #login
+  get 'sign_in' => 'sessions#new'
+  post 'sign_in' => 'sessions#create'
+  delete 'sign_out' => 'sessions#destroy'
+  ###
+
+  #user
+  get '/user/:id' => 'user#show', :as => 'user'
+
+  root 'sessions#new'
+  #login
+  get 'sign_in' => 'sessions#new'
+  post 'sign_in' => 'sessions#create'
+  get 'sign_out' => 'sessions#destroy'
+  ###
+
   get 'user/update'
 
-  get 'user/new'
+  get 'user/new' => 'user#new' , as: 'new_user'
 
   get 'user/create'
 

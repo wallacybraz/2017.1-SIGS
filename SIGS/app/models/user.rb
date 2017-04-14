@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_one :coordinator, dependent: :destroy
   has_one :administrative_assistant, dependent: :destroy
   has_one :department_assistant, dependent: :destroy
+<<<<<<< HEAD
 
 #name
 validates_length_of :name,
@@ -26,4 +27,9 @@ validates :cpf, :presence => { :message => 'Cpf nao pode ser vazio' },
 	length: { maximum: 11}, uniqueness: true,
 	format: { with: VALID_CPF_REGEX, :message => 'Insira um Cpf válido'}
 
+# registration
+validates :registration, :presence => { :message => 'Matricula nao pode ser vazio'}
+length: {9}, uniqueness: true,
+
 end
+

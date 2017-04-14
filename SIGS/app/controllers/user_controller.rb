@@ -1,6 +1,11 @@
 class UserController < ApplicationController
+  before_action :logged_in?, except: [:new,:create,:user_params]
   def new
     @user = User.new
+  end
+
+  def show
+      @user = User.find(params[:id])
   end
 
   #Creating a new user
@@ -29,4 +34,5 @@ class UserController < ApplicationController
   private
   def user_params
     params[:user].permit(:name, :email, :password, :registration, :cpf, :active)
+  end
 end
