@@ -1,8 +1,8 @@
 class User < ApplicationRecord
-  accepts_nested_attributes_for :administrative_assistant, :department_assistant, :coordinator
   has_one :coordinator, dependent: :destroy
   has_one :administrative_assistant, dependent: :destroy
   has_one :department_assistant, dependent: :destroy
+  accepts_nested_attributes_for :administrative_assistant, :department_assistant, :coordinator
 
 #name
 validates_length_of :name,
@@ -28,8 +28,8 @@ validates :cpf, :presence => { :message => 'Cpf nao pode ser vazio' },
 	format: { with: VALID_CPF_REGEX, :message => 'Insira um Cpf válido'}
 
 # registration
-validates :registration, :presence => { :message => 'Matricula nao pode ser vazio'}
-length: {is: 9}, uniqueness: true,
+# validates :registration, :presence => { :message => 'Matricula nao pode ser vazio'}
+# length: {is: 9}, uniqueness: true,
 
 end
 

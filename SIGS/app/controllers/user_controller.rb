@@ -5,7 +5,7 @@ class UserController < ApplicationController
 
       @user.build_department_assistant
       @user.build_coordinator
-      @user.build_administrator_assistant
+      @user.build_administrative_assistant
 	end
 
   def show
