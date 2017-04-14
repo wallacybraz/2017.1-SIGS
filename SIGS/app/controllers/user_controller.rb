@@ -1,8 +1,12 @@
 class UserController < ApplicationController
   before_action :logged_in?, except: [:new,:create,:user_params]
   def new
-    @user = User.new
-  end
+		@user = User.new
+
+      @user.build_department_assistant
+      @user.build_coordinator
+      @user.build_administrator_assistant
+	end
 
   def show
       @user = User.find(params[:id])
@@ -12,6 +16,7 @@ class UserController < ApplicationController
   def create
   	@user = User.new(user_params)
     if @user.save
+      #usuario criado com sucesso
     end
   end
 
@@ -34,8 +39,12 @@ class UserController < ApplicationController
     end
   end
 
+
   private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :registration, :cpf, :active)
+    params[:user].permit(:name, :email, :password, :registration, :cpf, :active,
+                          :coordinator_attributes => [:department_id,:course_id],
+                          :administrative_assistant_attributes => [],
+                          :department_assistant_attributes => [:department_id])
   end
 end

@@ -15,14 +15,9 @@ Rails.application.routes.draw do
 
   get 'coordinator/enable'
 
-  #login
-  get 'sign_in' => 'sessions#new'
-  post 'sign_in' => 'sessions#create'
-  delete 'sign_out' => 'sessions#destroy'
-  ###
-
   #user
   get '/user/:id' => 'user#show', :as => 'user'
+
 
   #login
   get 'sign_in' => 'sessions#new'
@@ -34,7 +29,7 @@ Rails.application.routes.draw do
 
   patch 'user/update/:id', controller: 'user', action: 'update', as: 'user_update'
 
-  get 'user/create'
+  post 'user/create' => 'user#create' , as: 'user_create'
 
   get 'user/edit/:id' => 'user#edit', as: 'user_edit'
 
@@ -55,6 +50,8 @@ Rails.application.routes.draw do
 ###
 
 ### Administrative Assistant - ROUTES
+  post 'administrative_assistant/create' => 'administrative_assistant#create',  as: 'adm_create'
+
   get 'administrative_assistant/show/:id' => 'administrative_assistant#show', as: 'adm_show'
 
   get 'administrative_assistant/destroy/:id' => 'administrative_assistant#destroy', as: 'adm_remove'
