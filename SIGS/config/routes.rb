@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  
+
+
   root 'sessions#new'
 
 ### Coordinator - ROUTES
@@ -15,19 +16,9 @@ Rails.application.routes.draw do
 
   get 'coordinator/enable'
 
-  #user
-  get '/user/:id' => 'user#show', :as => 'user'
-
-
-  #login
-  get 'sign_in' => 'sessions#new'
-  post 'sign_in' => 'sessions#create'
-  get 'sign_out' => 'sessions#destroy'
-  ###
-
-  get 'user/new' => 'user#new' , as: 'new_user'
-
   patch 'user/update/:id', controller: 'user', action: 'update', as: 'user_update'
+
+  get 'user/new' => 'user#new' , as: 'user_new'
 
   post 'user/create' => 'user#create' , as: 'user_create'
 
@@ -49,6 +40,13 @@ Rails.application.routes.draw do
   get 'department_assistant/enable' => 'department_assistant#enable'
 ###
 
+### Login - ROUTES
+#login
+  get 'sign_in' => 'sessions#new'
+  post 'sign_in' => 'sessions#create'
+  get 'sign_out' => 'sessions#destroy'
+###
+
 ### Administrative Assistant - ROUTES
   post 'administrative_assistant/create' => 'administrative_assistant#create',  as: 'adm_create'
 
@@ -65,9 +63,4 @@ Rails.application.routes.draw do
   get 'administrative_assistant/destroy_users/:id' => 'administrative_assistant#destroy_users' , as: 'destroy_users'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  post "/upload", controller: 'parsers', action: 'upload'
-  post "/parsers", controller: 'parsers', action: 'index', :as => "index_parser"
-  resources :parsers
-
 end
