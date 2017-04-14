@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   root 'sessions#new'
 
 ### Coordinator - ROUTES
@@ -24,20 +24,19 @@ Rails.application.routes.draw do
   #user
   get '/user/:id' => 'user#show', :as => 'user'
 
-  root 'sessions#new'
   #login
   get 'sign_in' => 'sessions#new'
   post 'sign_in' => 'sessions#create'
   get 'sign_out' => 'sessions#destroy'
   ###
 
-  get 'user/update'
-
   get 'user/new' => 'user#new' , as: 'new_user'
+
+  patch 'user/update/:id', controller: 'user', action: 'update', as: 'user_update'
 
   get 'user/create'
 
-  get 'user/edit'
+  get 'user/edit/:id' => 'user#edit', as: 'user_edit'
 
 ### Department Assistant - ROUTES
   get 'department_assistant/registration_request' => 'department_assistant#registration_request'
