@@ -51,7 +51,7 @@ Rails.application.routes.draw do
 
   get 'administrative_assistant/show/:id' => 'administrative_assistant#show', as: 'adm_show'
 
-  get 'administrative_assistant/remove/:id' => 'administrative_assistant#remove', as: 'adm_remove'
+  # get 'administrative_assistant/remove/:id' => 'administrative_assistant#remove', as: 'adm_remove'
 
   get 'administrative_assistant/index_users' => 'administrative_assistant#index_users'
 
