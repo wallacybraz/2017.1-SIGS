@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   root 'sessions#new'
 
+  #login
+  get 'sign_in' => 'sessions#new'
+  post 'sign_in' => 'sessions#create'
+  get 'sign_out' => 'sessions#destroy'
+  ###
+  
 ### Coordinator - ROUTES
   get 'coordinator/registration_request'
 
@@ -15,15 +21,20 @@ Rails.application.routes.draw do
 
   get 'coordinator/enable'
 
+  #user routes
+
   patch 'user/update/:id', controller: 'user', action: 'update', as: 'user_update'
 
   get 'user/new' => 'user#new' , as: 'user_new'
+
+  get '/user/:id' => 'user#show', :as => 'user'
 
   post 'user/create' => 'user#create' , as: 'user_create'
 
   get 'user/edit/:id' => 'user#edit', as: 'user_edit'
 
-### Department Assistant - ROUTES
+  ### Department Assistant - ROUTES
+
   get 'department_assistant/registration_request' => 'department_assistant#registration_request'
 
   get 'department_assistant/index/:id' => 'department_assistant#index', as: 'index'
