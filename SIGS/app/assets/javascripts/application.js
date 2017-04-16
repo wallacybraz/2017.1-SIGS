@@ -15,3 +15,27 @@
 //= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).ready(function(){
+
+    $("#dropdown-department-assistant").hide();
+    $("#dropdown-coordinator").hide();
+
+    $("input:radio[name='tipo']").change(function(){
+
+            if(this.value == 'aux' && this.checked){
+              $("#dropdown-department-assistant").show();
+            }else{
+              $("#dropdown-department-assistant").hide();
+            }
+
+            if(this.value == 'cord' && this.checked){
+              $("#dropdown-coordinator").show();
+            }else{
+              $("#dropdown-coordinator").hide();
+            }
+
+
+    });
+
+});

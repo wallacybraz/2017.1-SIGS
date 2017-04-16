@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post 'sign_in' => 'sessions#create'
   get 'sign_out' => 'sessions#destroy'
   ###
-  
+
 ### Coordinator - ROUTES
   get 'coordinator/registration_request'
 
