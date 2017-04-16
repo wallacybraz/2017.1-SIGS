@@ -4,6 +4,7 @@ class UserController < ApplicationController
 		@user = User.new
     @user.build_department_assistant
     @user.build_coordinator
+    @user.build_administrative_assistant
 	end
 
   def show
@@ -12,9 +13,17 @@ class UserController < ApplicationController
 
   #Creating a new user
   def create
+    if params[:tipo] =="cord"
+      user_params[:department_assistant_attributes] = ""
+    end 
   	@user = User.new(user_params)
+
+
     if @user.save
-      #usuario criado com sucesso
+      if params[:tipo] == "adm"
+        @administrative_assistant = AdministrativeAssistant.create(user_id: @user.id)
+      end
+
     end
   end
 
@@ -41,7 +50,8 @@ class UserController < ApplicationController
   def user_params
     params[:user].permit(:name, :email, :password,:registration, :cpf, :active,
                           :department_assistant_attributes => [:department_id,:user_id],
-                          :coordinator_attributes =>[:course_id,:user_id])
+                          :coordinator_attributes =>[:course_id,:user_id],
+                          :administrative_assistant_attributes => [:user_id])
 
 
 
