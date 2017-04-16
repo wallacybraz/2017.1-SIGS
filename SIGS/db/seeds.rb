@@ -29,7 +29,6 @@ user_1.save!
 
 # ========== Coordinator =================
 coordinator_1 = Coordinator.new
-coordinator_1.department_id = department_1.id
 coordinator_1.course_id = course_1.id
 coordinator_1.user_id = user_1.id
 coordinator_1.save!

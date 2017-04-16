@@ -38,11 +38,12 @@ class UserController < ApplicationController
   end
 
 
-  private
   def user_params
     params[:user].permit(:name, :email, :password,:registration, :cpf, :active,
-                          :coordinator_attributes => [:course_id],
-                          :department_assistant_attributes => [:department_id])
+                          :department_assistant_attributes => [:department_id,:user_id],
+                          :coordinator_attributes =>[:course_id,:user_id])
+
+
 
 
   end

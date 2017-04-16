@@ -1,0 +1,7 @@
+<div id="dropdown-coordinator">
+  <%= f.fields_for :coordinator do |ff| %>
+<p> Curso </p>
+    <%=ff.collection_select(:course_id,Course.all,:id,:name, include_blank: true)%>
+
+</div>
+<% end %>

@@ -39,3 +39,23 @@ $(document).ready(function(){
     });
 
 });
+
+function office_attributes() {
+  office = document.getElementById('type');
+
+  selected = office.options[office.selectedIndex].value;
+  alert(selected);
+  div = document.getElementById("container-attributes");
+  alert(div);
+  switch (selected) {
+    case "1":
+      div.innerHTML = "Paragraph changed!";
+      break;
+    case "2":
+      div.innerHTML = "Paragraph changed!";
+      break;
+    case "3":
+      div.innerHTML = "Paragraph changed!";
+      break;
+  }
+}

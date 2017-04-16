@@ -22,11 +22,19 @@
             <%= f.text_field :cpf, class: 'form-control', placeholder: 'Digite seu CPF' %>
           </div>
 
-        <div id="type">
-          <input type="radio" name="tipo"value="adm" checked> Assistente administrativo <br>
-          <input type="radio" name="tipo"value="aux"> Auxiliar de departamento <br>
-          <input type="radio" name="tipo" value="cord"> Coordenador de curso
-        </div>
+
+          <select id="type" onchange="office_attributes()">
+              <option value="1"> Assistente Administrativo </option>
+              <option value="2"> Auxiliar de departamento </option>
+              <option value="3"> Coordenador de curso </option>
+
+
+          </select>
+
+          <div id="container-attributes"></div>
+
+
+
 
 
         </div>
@@ -55,17 +63,12 @@
           </div>
           <% end %>
 
-          <div id="dropdown-coordinator">
-            <%= f.fields_for :coordinator do |ff| %>
-          <p> Curso </p>
-              <%=ff.collection_select(:course_id,Course.all,:id,:name, include_blank: true)%>
-
-          </div>
-          <% end %>
 
 
-          <%= f.submit "Enviar", class: 'pull-right btn btn-default btn-success' %>
+
+
         </div>
+        <%= f.submit "Enviar", class: 'pull-right btn btn-default btn-success' %>
 
 
 
