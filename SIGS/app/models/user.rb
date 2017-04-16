@@ -14,11 +14,11 @@ validates_length_of :name,
 VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(?:\.[a-z\d\-]+)*\.[a-z]+\z/i
 
 validates :email, :presence => { :message => 'Email nao pode ser vazio' },
-	length: { maximum: 50}, uniqueness: true,
+	length: { maximum: 50}, uniqueness: true, confirmation: true,
 	format: { with: VALID_EMAIL_REGEX, :message => 'Insira um e-mail válido'}
 
 # password
-# validates :password, length: { minimum: 6, maximum: 20, :message => 'Senha deve possuir no mínimo 4 e máximo de 16 caracteres' }, confirmation: true, on: :create		  			
+validates :password, length: { minimum: 6, maximum: 20, :message => 'Senha deve possuir no mínimo 4 e máximo de 16 caracteres' }, confirmation: true, on: :create		  			
 
 # cpf
 VALID_CPF_REGEX = /\A[0-9]{3}?[0-9]{3}?[0-9]{3}?[0-9]{2}\z/i
@@ -28,8 +28,10 @@ validates :cpf, :presence => { :message => 'Cpf nao pode ser vazio' },
 	format: { with: VALID_CPF_REGEX, :message => 'Insira um Cpf válido'}
 
 # registration
-# validates :registration, :presence => { :message => 'Matricula nao pode ser vazio'}
-# length: {maximum: 9}, uniqueness: true
+# validates_length_of :origin,
+# 		:within => 9
+# 		:too_short => 'Matricula deve possuir 9 digitos',
+# 		:too_long => 'Matricula deve possuir 9 digitos'
 
   accepts_nested_attributes_for :department_assistant, :coordinator, :administrative_assistant
 end
