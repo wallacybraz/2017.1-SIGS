@@ -25,6 +25,8 @@ $(document).ready(function(){
 
             if(this.value == 'aux' && this.checked){
               $("#dropdown-department-assistant").show();
+
+
             }else{
               $("#dropdown-department-assistant").hide();
             }
@@ -37,5 +39,6 @@ $(document).ready(function(){
 
 
     });
+
 
 });

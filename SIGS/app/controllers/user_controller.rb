@@ -13,11 +13,7 @@ class UserController < ApplicationController
 
   #Creating a new user
   def create
-    if params[:tipo] =="cord"
-      user_params[:department_assistant_attributes] = ""
-    end 
-  	@user = User.new(user_params)
-
+    @user = User.new(user_params)
 
     if @user.save
       if params[:tipo] == "adm"
@@ -46,15 +42,12 @@ class UserController < ApplicationController
     end
   end
 
-
+  private
   def user_params
     params[:user].permit(:name, :email, :password,:registration, :cpf, :active,
                           :department_assistant_attributes => [:department_id,:user_id],
                           :coordinator_attributes =>[:course_id,:user_id],
                           :administrative_assistant_attributes => [:user_id])
-
-
-
 
   end
 end
